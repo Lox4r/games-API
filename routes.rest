@@ -1,0 +1,100 @@
+### Get all games
+GET http://localhost:3000/games
+
+###
+
+### Get one game
+GET http://localhost:3000/games/6a5c258132875a182c89b05e
+
+###
+
+### Create game
+POST http://localhost:3000/games
+Content-Type: application/json
+
+{
+  "title": "The Witcher 3",
+  "genre": "RPG",
+  "platform": "PC",
+  "developer": "CD Projekt Red",
+  "publisher": "CD Projekt",
+  "releaseYear": 2015,
+  "rating": 9.8,
+  "completed": true,
+  "hoursPlayed": 150
+}
+
+###
+
+### Update game
+PUT http://localhost:3000/games/6a5c2d2a2f26bbdb2840924a
+Content-Type: application/json
+
+{
+  "title": "The Witcher 3 Updated",
+  "genre": "RPG",
+  "platform": "PC",
+  "developer": "CD Projekt Red",
+  "publisher": "CD Projekt",
+  "releaseYear": 2015,
+  "rating": 10,
+  "completed": true,
+  "hoursPlayed": 200
+}
+
+###
+
+### Delete game
+DELETE http://localhost:3000/games/6a5c2d2a2f26bbdb2840924a
+
+
+###############################################
+# PLAYERS
+###############################################
+
+### Get all players
+GET http://localhost:3000/players
+
+###
+
+### Get one player
+GET http://localhost:3000/players/PUT_PLAYER_ID_HERE
+
+###
+
+### Create player
+POST http://localhost:3000/players
+Content-Type: application/json
+
+{
+  "name": "Logan Oyolo",
+  "username": "LoganGamer",
+  "favoriteGame": "Elden Ring",
+  "country": "Peru",
+  "platform": "PC",
+  "age": 25,
+  "hoursPlayed": 450,
+  "online": true
+}
+
+###
+
+### Update player
+PUT http://localhost:3000/players/PUT_PLAYER_ID_HERE
+Content-Type: application/json
+
+{
+  "name": "Logan Oyolo",
+  "username": "LoganGamer",
+  "favoriteGame": "Minecraft",
+  "country": "Peru",
+  "platform": "PC",
+  "age": 25,
+  "hoursPlayed": 500,
+  "online": false
+}
+
+###
+
+### Delete player
+DELETE http://localhost:3000/players/PUT_PLAYER_ID_HERE
