@@ -5,7 +5,7 @@ const doc = {
     title: "Games API",
     description: "API for managing games and players"
   },
-  host: "games-api-abat.onrender.com",
+  host: "games-api-oy2k.onrender.com",
   schemes: ["http"]
 };
 
