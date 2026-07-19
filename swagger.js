@@ -6,7 +6,7 @@ const doc = {
     description: "API for managing games and players"
   },
   host: "games-api-oy2k.onrender.com",
-  schemes: ["http"]
+  schemes: ["https"]
 };
 
 const outputFile = "./swagger-output.json";
