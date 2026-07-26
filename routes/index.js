@@ -1,18 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
+const authRoutes = require("./auth");
+const gamesRoutes = require("./games");
+const playersRoutes = require("./players");
+
 router.get("/", (req, res) => {
-  res.status(200).json({
-    message: "Welcome to the Games API",
-    endpoints: {
-      games: "/games",
-      players: "/players",
-      documentation: "/api-docs"
-    }
-  });
+  res.json({ message: "API running" });
 });
 
-router.use("/games", require("./games"));
-router.use("/players", require("./players"));
+router.use("/auth", authRoutes);
+router.use("/games", gamesRoutes);
+router.use("/players", playersRoutes);
 
 module.exports = router;

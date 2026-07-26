@@ -1,25 +1,41 @@
 const express = require("express");
 const router = express.Router();
 
+// Controllers
 const playersController = require("../controllers/players");
 
-const {
-  playerValidationRules,
-  validate
-} = require("../middleware/validate");
+// Middleware modules
+const authModule = require("../middleware/auth");
+const validateModule = require("../middleware/validate");
 
-console.log("playersController =", playersController);
-console.log("playerValidationRules =", typeof playerValidationRules);
-console.log("validate =", typeof validate);
+const { isAuthenticated } = authModule;
+const { playerValidationRules, validate } = validateModule;
 
+// Public routes
 router.get("/", playersController.getAll);
 router.get("/:id", playersController.getSingle);
 
-// TEMPORARILY disable validation
-router.post("/", playersController.createPlayer);
+// Protected routes
+router.post(
+  "/",
+  isAuthenticated,
+  playerValidationRules,
+  validate,
+  playersController.createPlayer
+);
 
-router.put("/:id", playersController.updatePlayer);
+router.put(
+  "/:id",
+  isAuthenticated,
+  playerValidationRules,
+  validate,
+  playersController.updatePlayer
+);
 
-router.delete("/:id", playersController.deletePlayer);
+router.delete(
+  "/:id",
+  isAuthenticated,
+  playersController.deletePlayer
+);
 
 module.exports = router;

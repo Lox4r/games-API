@@ -1,23 +1,25 @@
-const { MongoClient } = require("mongodb");
 const dns = require("node:dns/promises");
+const { MongoClient } = require("mongodb");
 
 let database;
 
 const initDb = async (callback) => {
   if (database) {
-    console.log("Database is already initialized.");
     return callback(null, database);
   }
 
   try {
-    dns.setServers(["1.1.1.1"]);
+    // Use public DNS servers to avoid SRV lookup issues on Windows
+    dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
     const client = new MongoClient(process.env.MONGODB_URI);
+
     await client.connect();
 
     database = client.db("gamesAPI");
 
-    console.log("Connected to MongoDB.");
+    console.log("Connected to MongoDB");
+
     callback(null, database);
   } catch (error) {
     console.error("MongoDB connection failed:", error);
@@ -35,5 +37,5 @@ const getDb = () => {
 
 module.exports = {
   initDb,
-  getDb
+  getDb,
 };
